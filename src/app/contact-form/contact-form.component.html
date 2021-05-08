@@ -1,0 +1,78 @@
+<!-- Form starts -->
+<form #myForm="ngForm" (submit)="templateForm(myForm.value)" novalidate>
+
+    <div>
+       <p>¿Cómo de atractivo te parece este cuerpo?</p>
+
+       <ul>
+          <li>
+            <input type="radio" value="1" name="attr" ngModel>
+            <label for="attr">Nada atractivo</label>
+          </li>
+          <li>
+            <input type="radio" value="2" name="attr" ngModel>
+            <label for="attr">Poco atractivo</label>
+          </li>
+          <li>
+            <input type="radio" value="3" name="attr" ngModel>
+            <label for="attr">Más o menos atractivo</label>
+          </li>
+          <li>
+            <input type="radio" value="4" name="attr" ngModel>
+            <label for="attr">Indiferente</label>
+          </li>
+          <li>
+            <input type="radio" value="5" name="attr" ngModel>
+            <label for="attr">Algo atractivo</label>
+          </li>
+          <li>
+            <input type="radio" value="6" name="attr" ngModel>
+            <label for="attr">Atractivo</label>
+          </li>
+          <li>
+            <input type="radio" value="7" name="attr" ngModel>
+            <label for="attr">Muy atractivo</label>
+          </li>
+       </ul>
+       
+    </div>
+
+    <div>
+        <p>¿Cómo de deseable te parece este cuerpo?</p>
+ 
+        <ul>
+         <li>
+           <input type="radio" value="1" name="desire" ngModel>
+           <label for="desire">Nada deseable</label>
+         </li>
+         <li>
+           <input type="radio" value="2" name="desire" ngModel>
+           <label for="desire">Poco deseable</label>
+         </li>
+         <li>
+           <input type="radio" value="3" name="desire" ngModel>
+           <label for="desire">Más o menos deseable</label>
+         </li>
+         <li>
+           <input type="radio" value="4" name="desire" ngModel>
+           <label for="desire">Indiferente</label>
+         </li>
+         <li>
+           <input type="radio" value="5" name="desire" ngModel>
+           <label for="desire">Algo deseable</label>
+         </li>
+         <li>
+           <input type="radio" value="6" name="desire" ngModel>
+           <label for="desire">Deseable</label>
+         </li>
+         <li>
+           <input type="radio" value="7" name="desire" ngModel>
+           <label for="desire">Muy deseable</label>
+         </li>
+      </ul>
+
+     </div>
+ 
+ 
+    <button [disabled]="!showSend" type="submit" class="btn btn-danger btn-lg btn-block">Enviar</button>
+ </form><!-- Form ends -->

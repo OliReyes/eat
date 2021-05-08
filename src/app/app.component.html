@@ -1,0 +1,81 @@
+<div class="container">
+
+  <div *ngIf="!start && !prime && !target && !form && !finish"  class="instrucciones">
+
+    <p>
+      La siguiente tarea consiste en la presentación de 25 secuencias de pares de imágenes (es decir, 25 ensayos), tras las cuales habrá dos preguntas que se contestarán mediante una escala de 7 puntos.
+
+      Al principio de cada ensayo aparecerá una cruz en el centro de la pantalla, que le indicará el inicio del mismo y que se presentará durante 1 segundo. Tras esto, le mostraremos una imagen de un cuerpo durante 2 segundos y tras esta, le mostraremos otra imagen de otro cuerpo, durante 4 segundos. Al tiempo que aparece la última imagen, aparecerán en pantalla dos preguntas: "¿cómo de atractivo le parece este cuerpo?" y "¿cómo de deseable le parece este cuerpo?" ("deseable" en el sentido de que usted quisiera "tener" ese cuerpo). A estas preguntas responderá en una escala de 7 puntos que va desde "Nada atractivo/deseable" a "Muy atractivo/deseable". No existe un tiempo limitado para contestar, aunque la imagen desaparezca. 
+      
+      Así, sucesivamente, durante 25 ensayos. 
+      
+      Ingrese el número que le hemos asignado y una vez leídas y comprendidas las instrucciones pulse "Continuar". Si tiene alguna duda puede preguntar al investigador que le guía de manera on-line.
+    </p>
+  
+    
+    <input [(ngModel)]="usuario" type="number" max="100" min="0" value="0">
+
+    <button (click)="onContinue()">Continuar</button>
+  
+  </div>
+  
+  <div *ngIf="start" class="x">
+  
+    <p>+</p>
+  
+  </div>
+  
+  <div *ngIf="prime">
+  
+    <img src="../assets/{{number}}.png" alt="prime" width="250" class="prime-{{number}}">
+  
+  </div>
+  
+  <div class="wrapper" *ngIf="form || target">
+    <!-- [style.visibility]="target ? 'visible' : 'hidden'" -->
+    <div *ngIf="target" class="target">
+  
+      <img src="../assets/3.png" alt="prime" width="250">
+    
+    </div>
+    
+    <div *ngIf="form" class="form">
+      <contact-form [prime]="number" (saved)="restart()" (finished)="onFinish()"></contact-form>
+    </div>
+  </div>
+  
+  <div *ngIf="finish">
+  
+    <h1>¡Gracias por tu participación y aportación a la ciencia! :)</h1>
+
+    <button (click)="exportExcel()">Descargar resultados</button>
+
+    <table id="results" style="display: none;">
+
+      <tr>
+        <th>User</th>
+      </tr>
+      
+      <tr>
+        <td>#{{usuario}}</td>
+      </tr>
+
+      <tr>
+        <th>Attractive</th>
+        <th>Desire</th>
+        <th>Prime</th>
+      </tr>
+
+      <tr *ngFor="let answer of answers">
+        <td>{{answer.attr}}</td>
+        <td>{{answer.desire}}</td>
+        <td>{{answer.prime}}</td>
+      </tr>
+
+    </table>
+  
+  </div>
+
+</div>
+
+
